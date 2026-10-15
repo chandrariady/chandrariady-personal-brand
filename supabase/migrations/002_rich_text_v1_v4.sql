@@ -1,0 +1,10 @@
+alter table public.articles add column if not exists content_json jsonb;
+alter table public.articles add column if not exists content_format text not null default 'markdown' check(content_format in ('markdown','tiptap'));
+alter table public.articles add column if not exists reading_time integer not null default 1;
+alter table public.articles add column if not exists word_count integer not null default 0;
+alter table public.articles add column if not exists toc jsonb not null default '[]'::jsonb;
+alter table public.articles add column if not exists ai_metadata jsonb not null default '{}'::jsonb;
+alter table public.articles add column if not exists content_version integer not null default 1;
+create index if not exists articles_content_format_idx on public.articles(content_format);
+create index if not exists articles_tags_gin_idx on public.articles using gin(tags);
+create index if not exists articles_ai_metadata_gin_idx on public.articles using gin(ai_metadata);

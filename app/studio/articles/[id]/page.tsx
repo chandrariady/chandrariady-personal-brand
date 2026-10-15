@@ -1,0 +1,2 @@
+import {notFound} from "next/navigation";import ArticleEditor from "@/components/studio/ArticleEditor";import {createClient} from "@/lib/supabase/server";import type {Article} from "@/lib/cms/types";
+export default async function EditArticle({params}:{params:Promise<{id:string}>}){const {id}=await params;const supabase=await createClient();const {data}=await supabase.from("articles").select("*").eq("id",id).single();if(!data)notFound();return <ArticleEditor article={data as Article}/>}

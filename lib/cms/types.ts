@@ -1,0 +1,6 @@
+import type {AIMetadata,JSONContent,TocItem} from "@/lib/cms/rich-text-types";
+export type ArticleStatus="draft"|"published"|"archived";export type ArticleType="deep_dive"|"field_note"|"quick_thought";
+export type Article={id:string;title:string;slug:string;excerpt:string;content:string;category:string;tags:string[];type:ArticleType;status:ArticleStatus;cover_image:string|null;featured:boolean;seo_title:string|null;seo_description:string|null;published_at:string|null;created_at:string;updated_at:string;author_id:string|null;content_json:JSONContent|null;content_format:"markdown"|"tiptap";reading_time:number;word_count:number;toc:TocItem[];ai_metadata:AIMetadata;content_version:number};
+export type ArticleInput=Pick<Article,"title"|"slug"|"excerpt"|"content"|"category"|"tags"|"type"|"status"|"cover_image"|"featured"|"seo_title"|"seo_description"|"content_json"|"content_format"|"reading_time"|"word_count"|"toc"|"ai_metadata"|"content_version">;
+export const categories=["Mine Planning","Strategic Planning","Operations","Nickel","Mining Technology","AI in Mining","Career","Field Notes"];
+export const articleTypes:{value:ArticleType;label:string}[]=[{value:"deep_dive",label:"Deep Dive"},{value:"field_note",label:"Field Note"},{value:"quick_thought",label:"Quick Thought"}];

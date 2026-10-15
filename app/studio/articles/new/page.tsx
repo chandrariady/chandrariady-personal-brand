@@ -1,0 +1,1 @@
+import ArticleEditor from "@/components/studio/ArticleEditor";export default function NewArticle(){return <ArticleEditor/>}
